@@ -1,0 +1,18 @@
+name: Azure Static Web Apps CI/CD
+
+on:
+  push:
+    branches:
+      - master  # Use 'main' if your branch is named 'main'
+
+jobs:
+  build_and_deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Deploy to Azure Static Web Apps
+        uses: Azure/static-web-apps-deploy@v1
+        with:
+          azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN }}
+          app_location: "/"  # This is where index.html is
+          output_location: "/"
